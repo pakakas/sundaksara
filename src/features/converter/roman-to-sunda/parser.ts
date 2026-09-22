@@ -30,6 +30,11 @@ export class Parser extends BaseParser {
             return this.append(current)
         }
 
+        if (current.is(T.BINDU_KA)) {
+            this.#exitSyllable()
+            return this.append(current.as(T.BINDU_KA))
+        }
+
         this.#appendUnknown(current)
     }
 

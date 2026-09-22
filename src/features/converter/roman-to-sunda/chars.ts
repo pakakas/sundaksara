@@ -10,6 +10,7 @@ export const T = {
   PAMAEH: 'pamaeh',
   NUMBER: 'number',
   UNKNOWN: 'unknown',
+  BINDU_KA: 'bindu-ka',
 };
 
 export const UnicodeIndexes = {
@@ -20,7 +21,7 @@ export const UnicodeIndexes = {
   [T.INFIX]: 7073,
   [T.SUFFIX]: 7040,
   [T.SUFFIX_CONSONANT]: 7082,
-  // PAMAEH
+  [T.BINDU_KA]: 0x1CC5,
 }
 
 const CHR_0 = 48
@@ -32,11 +33,11 @@ export const Chars = {
   isAllowed(ch) {
     return (ch >= CHR_0 && ch <= CHR_9)
       || (ch >= CHR_A && ch <= CHR_Z)
-      || (ch >= CHR_A + 32 && ch <= CHR_Z + 32) // lowercase a-z 
-      || (ch >= 200 && ch <= 203) // e talling and alternatives 
+      || (ch >= CHR_A + 32 && ch <= CHR_Z + 32)
+      || (ch >= 200 && ch <= 203)
       || (ch >= 232 && ch <= 235)
       || (ch >= 274 && ch <= 279)
-      || [282, 283, 516, 519, 904, 941].includes(ch)
+      || [282, 283, 516, 519, 904, 941, 34, 39].includes(ch)
   }
 }
 Chars[T.CONSONANT] = 'kqg-cjz-tdnpfvbmyrlwsxh'.split('');
@@ -50,6 +51,7 @@ Chars[T.SUFFIX] = ['ng', 'r', 'h'];
 Chars[T.INFIX] = ['y', 'r', 'l'];
 Chars[T.INFIX][11] = 'm';
 Chars[T.INFIX][12] = 'w';
+Chars[T.BINDU_KA] = ['"', "'"];
 
 Chars[T.VOWEL] = [...'aiu\u00e9oe'.split(''), 'eu'];
 Chars[T.DIACRITIC_VOWEL] = Chars[T.VOWEL]

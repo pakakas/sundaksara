@@ -49,6 +49,9 @@ function walk(element: Element | null | undefined): any {
         [T.DEFAULT_VOWEL](node: Element) {
             return { toString: () => '' };
         },
+        [T.BINDU_KA](node: Element): string {
+            return toChar(UnicodeIndexes[T.BINDU_KA]);
+        },
         [T.UNKNOWN](node: Element) {
             return node.data;
         },
